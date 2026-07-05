@@ -34,36 +34,23 @@ async function cfStashFile(file) {
   });
 }
 
-// Call from editor.html on load — returns the file (or null).
-// Does NOT delete it yet — call cfClearFile() only after the video
-// has actually loaded successfully, so a page reload in between
-// (e.g. from an old cached service worker) can't lose the file.
+// Call from editor.html on load — returns the file (or null) and clears it
 async function cfTakeFile() {
   try {
     const db = await cfOpenDB();
     return await new Promise((resolve, reject) => {
-      const tx = db.transaction(CF_STORE_NAME, 'readonly');
-      const getReq = tx.objectStore(CF_STORE_NAME).get(CF_KEY);
-      getReq.onsuccess = () => resolve(getReq.result || null);
+      const tx = db.transaction(CF_STORE_NAME, 'readwrite');
+      const store = tx.objectStore(CF_STORE_NAME);
+      const getReq = store.get(CF_KEY);
+      getReq.onsuccess = () => {
+        const file = getReq.result || null;
+        store.delete(CF_KEY);
+        resolve(file);
+      };
       getReq.onerror = () => reject(getReq.error);
     });
   } catch (e) {
     console.warn('[ClipForge] handoff read failed', e);
     return null;
-  }
-}
-
-// Call once the video has successfully loaded, to clean up.
-async function cfClearFile() {
-  try {
-    const db = await cfOpenDB();
-    return new Promise((resolve, reject) => {
-      const tx = db.transaction(CF_STORE_NAME, 'readwrite');
-      tx.objectStore(CF_STORE_NAME).delete(CF_KEY);
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-    });
-  } catch (e) {
-    console.warn('[ClipForge] handoff clear failed', e);
   }
 }

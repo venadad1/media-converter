@@ -152,9 +152,9 @@
         <script src="https://globalimmaturelunatic.com/d38658bff53a8ad3d32902758ea33ce3/invoke.js"></script>
     </div>
 
-    <!-- UPLOAD ZONE — selecting/dropping a file here hands it off to /editor -->
+    <!-- CTA — opens the editor as its own page -->
     <section class="upload-section" id="uploadSection">
-      <div class="upload-zone" id="uploadZone">
+      <a href="/editor" class="upload-zone" id="uploadZone" style="cursor:pointer; text-decoration:none;">
         <div class="upload-waveform" aria-hidden="true">
           <div class="waveform-bars" id="waveformBars"></div>
         </div>
@@ -164,18 +164,16 @@
               <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
             </svg>
           </div>
-          <h2 class="upload-title">Drop Your Video to Start Editing — Free</h2>
+          <h2 class="upload-title">Ready to Trim &amp; Crop Your Video?</h2>
           <p class="upload-sub">MP4, MOV, WEBM — no file size limits, no watermark, no time limit</p>
-          <label class="btn btn-primary upload-btn" for="fileInput">
+          <span class="btn btn-primary upload-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-              <path d="M15 10l-4 4-4-4M19 4H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z"/>
+              <path d="M5 12h14M13 6l6 6-6 6"/>
             </svg>
-            Choose File
-          </label>
-          <input type="file" id="fileInput" accept="video/mp4,video/webm,video/quicktime,.mov,.mp4,.webm" hidden />
-          <p class="upload-sub" id="handoffStatus" style="margin-top:10px;"></p>
+            Open Editor
+          </span>
         </div>
-      </div>
+      </a>
     </section>
   </main>
 
@@ -252,11 +250,9 @@
     </div>
   </footer>
 
-  <!-- Tiny helper: decorative waveform + handing the chosen file off to /editor.
-       No ffmpeg, no service worker here — this page stays ad-friendly. -->
-  <script src="js/handoff.js"></script>
+  <!-- Decorative waveform + mobile nav. No ffmpeg, no file handling here —
+       this page stays simple and ad-friendly; the editor lives on its own page. -->
   <script>
-    // Decorative waveform bars
     (function buildWaveform() {
       const bars = document.getElementById('waveformBars');
       if (!bars) return;
@@ -271,37 +267,9 @@
       }
     })();
 
-    // Mobile nav
     document.getElementById('mobileToggle')?.addEventListener('click', () => {
       document.getElementById('mobileMenu')?.classList.toggle('open');
     });
-
-    // Upload zone → stash file → redirect to /editor
-    const uploadZone  = document.getElementById('uploadZone');
-    const fileInput   = document.getElementById('fileInput');
-    const statusEl    = document.getElementById('handoffStatus');
-
-    async function goToEditorWithFile(file) {
-      if (!file || !file.type.startsWith('video/')) return;
-      statusEl.textContent = 'Opening editor…';
-      try {
-        await cfStashFile(file);
-      } catch (e) {
-        console.warn('[ClipForge] handoff failed, editor will ask you to choose the file again', e);
-      }
-      window.location.href = '/editor';
-    }
-
-    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-    uploadZone.addEventListener('drop', e => {
-      e.preventDefault();
-      uploadZone.classList.remove('drag-over');
-      const file = e.dataTransfer?.files?.[0];
-      goToEditorWithFile(file);
-    });
-    uploadZone.addEventListener('click', e => { if (!e.target.closest('.upload-btn')) fileInput.click(); });
-    fileInput.addEventListener('change', () => goToEditorWithFile(fileInput.files[0]));
   </script>
 
 </body>

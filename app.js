@@ -81,27 +81,6 @@ if (detectInAppBrowser()) {
   else document.addEventListener('DOMContentLoaded', showInAppBrowserWarning);
 }
 
-// ── HANDOFF: pick up a file passed from the landing page (/) ──────
-// If the user dropped/chose a video on the homepage, it was stashed
-// in IndexedDB (see js/handoff.js) and we auto-load it here so the
-// flow feels the same as before the two pages were split.
-(async function pickUpHandoffFile() {
-  if (typeof cfTakeFile !== 'function') return; // handoff.js not loaded, skip silently
-  try {
-    const file = await cfTakeFile();
-    if (file) {
-      loadVideo(file);
-      // Only clear it once the video has actually finished loading —
-      // if a reload happens before that, the file is still there to retry.
-      videoPlayer.addEventListener('loadedmetadata', () => {
-        if (typeof cfClearFile === 'function') cfClearFile();
-      }, { once: true });
-    }
-  } catch (e) {
-    console.warn('[ClipForge] no handoff file to pick up', e);
-  }
-})();
-
 // ── DOM REFS ──────────────────────────────────────────
 const uploadZone      = document.getElementById('uploadZone');
 const fileInput       = document.getElementById('fileInput');
