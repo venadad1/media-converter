@@ -70,49 +70,44 @@
   </style>
 </head>
 <body>
-<div class="fixed-banner-right">
-    <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) -->
-	<script>
-  atOptions = {
-    'key' : 'f83edbdafdfc06a09e4073273fb32715',
-    'format' : 'iframe',
-    'height' : 300,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-<script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
 
-    <div id="adsterra-banner"></div>
-</div>
-</head>
-<body>
 <div class="fixed-banner-right">
     <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) -->
+    <script>
+      atOptions = {
+        'key' : 'f83edbdafdfc06a09e4073273fb32715',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
     <div id="adsterra-banner"></div>
 </div>
+
   <!-- NAV -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
+      <a href="/" class="nav-logo">
         <span class="logo-icon">⬡</span>
         <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
       </a>
       <div class="nav-links">
-        <a href="index.html" class="nav-link active">Editor</a>
-        <a href="pages/terms.html" class="nav-link">Terms</a>
-        <a href="pages/privacy.html" class="nav-link">Privacy</a>
-        <a href="pages/sitemap.html" class="nav-link">Sitemap</a>
+        <a href="/" class="nav-link active">Editor</a>
+        <a href="/terms" class="nav-link">Terms</a>
+        <a href="/privacy" class="nav-link">Privacy</a>
+        <a href="/sitemap" class="nav-link">Sitemap</a>
       </div>
       <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu">
-      <a href="index.html" class="nav-link active">Editor</a>
-      <a href="pages/terms.html" class="nav-link">Terms</a>
-      <a href="pages/privacy.html" class="nav-link">Privacy</a>
-      <a href="pages/sitemap.html" class="nav-link">Sitemap</a>
+      <a href="/" class="nav-link active">Editor</a>
+      <a href="/terms" class="nav-link">Terms</a>
+      <a href="/privacy" class="nav-link">Privacy</a>
+      <a href="/sitemap" class="nav-link">Sitemap</a>
     </div>
   </nav>
 
@@ -157,7 +152,7 @@
         <script src="https://globalimmaturelunatic.com/d38658bff53a8ad3d32902758ea33ce3/invoke.js"></script>
     </div>
 
-    <!-- UPLOAD ZONE -->
+    <!-- UPLOAD ZONE — selecting/dropping a file here hands it off to /editor -->
     <section class="upload-section" id="uploadSection">
       <div class="upload-zone" id="uploadZone">
         <div class="upload-waveform" aria-hidden="true">
@@ -178,220 +173,9 @@
             Choose File
           </label>
           <input type="file" id="fileInput" accept="video/mp4,video/webm,video/quicktime,.mov,.mp4,.webm" hidden />
+          <p class="upload-sub" id="handoffStatus" style="margin-top:10px;"></p>
         </div>
       </div>
-    </section>
-
-    <!-- EDITOR WORKSPACE -->
-    <section class="editor-section hidden" id="editorSection">
-
-      <!-- TOP ROW: Preview + Crop -->
-      <div class="editor-top">
-
-        <!-- VIDEO PANEL -->
-        <div class="glass-panel video-panel">
-          <div class="panel-header">
-            <span class="panel-title">Preview</span>
-            <div class="panel-actions">
-              <span class="file-badge" id="fileBadge">video.mp4</span>
-              <button class="btn btn-ghost btn-sm" id="changeFileBtn">Change file</button>
-            </div>
-          </div>
-          <div class="video-wrap" id="videoWrap">
-            <video id="videoPlayer" preload="metadata" playsinline></video>
-            <!-- CROP OVERLAY -->
-            <div class="crop-overlay hidden" id="cropOverlay">
-              <div class="crop-shade crop-shade-top" id="cropShadeTop"></div>
-              <div class="crop-shade crop-shade-bottom" id="cropShadeBottom"></div>
-              <div class="crop-shade crop-shade-left" id="cropShadeLeft"></div>
-              <div class="crop-shade crop-shade-right" id="cropShadeRight"></div>
-              <div class="crop-box" id="cropBox">
-                <div class="crop-handle crop-handle-tl" data-handle="tl"></div>
-                <div class="crop-handle crop-handle-tr" data-handle="tr"></div>
-                <div class="crop-handle crop-handle-bl" data-handle="bl"></div>
-                <div class="crop-handle crop-handle-br" data-handle="br"></div>
-                <div class="crop-handle crop-handle-tc" data-handle="tc"></div>
-                <div class="crop-handle crop-handle-bc" data-handle="bc"></div>
-                <div class="crop-handle crop-handle-lc" data-handle="lc"></div>
-                <div class="crop-handle crop-handle-rc" data-handle="rc"></div>
-                <div class="crop-crosshair"></div>
-                <div class="crop-rule-v"></div>
-                <div class="crop-rule-h"></div>
-              </div>
-            </div>
-          </div>
-          <!-- PLAYBACK CONTROLS -->
-          <div class="playback-controls">
-            <button class="ctrl-btn" id="playBtn" aria-label="Play/Pause">
-              <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
-              <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" class="hidden"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            </button>
-            <div class="seek-wrap">
-              <div class="seek-track" id="seekTrack">
-                <div class="seek-range-bg" id="seekRangeBg"></div>
-                <div class="seek-progress" id="seekProgress"></div>
-                <input type="range" class="seek-slider" id="seekSlider" min="0" max="100" step="0.01" value="0" aria-label="Seek" />
-              </div>
-            </div>
-            <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
-          </div>
-        </div>
-
-        <!-- TOOLS PANEL -->
-        <div class="glass-panel tools-panel">
-          <div class="panel-header">
-            <span class="panel-title">Tools</span>
-          </div>
-
-          <!-- TABS -->
-          <div class="tool-tabs">
-            <button class="tool-tab active" data-tab="trim">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M6 20L18 4M6 4h.01M18 20h.01M8 12h8"/></svg>
-              Trim
-            </button>
-            <button class="tool-tab" data-tab="crop">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M6 2v14a2 2 0 002 2h14M18 22V8a2 2 0 00-2-2H2"/></svg>
-              Crop
-            </button>
-            <button class="tool-tab" data-tab="export">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-              Export
-            </button>
-          </div>
-
-          <!-- TRIM TAB -->
-          <div class="tab-content active" id="tab-trim">
-            <div class="trim-timeline" id="trimTimeline">
-              <div class="trim-range" id="trimRange"></div>
-              <div class="trim-thumb trim-thumb-start" id="trimStart" aria-label="Trim start"></div>
-              <div class="trim-thumb trim-thumb-end" id="trimEnd" aria-label="Trim end"></div>
-              <div class="trim-playhead" id="trimPlayhead"></div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label class="field-label">Start time</label>
-                <div class="time-input-wrap">
-                  <input type="text" class="time-input" id="startInput" inputmode="numeric" placeholder="0:00" value="0:00" />
-                  <span class="time-unit">min:sec</span>
-                </div>
-              </div>
-              <div class="field-divider">→</div>
-              <div class="field">
-                <label class="field-label">End time</label>
-                <div class="time-input-wrap">
-                  <input type="text" class="time-input" id="endInput" inputmode="numeric" placeholder="0:00" value="0:00" />
-                  <span class="time-unit">min:sec</span>
-                </div>
-              </div>
-            </div>
-            <div class="trim-info">
-              <span class="trim-info-label">Duration:</span>
-              <span class="trim-info-val" id="trimDuration">0s</span>
-            </div>
-            <button class="btn btn-secondary btn-full" id="previewTrimBtn">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M8 5v14l11-7z"/></svg>
-              Preview trim range
-            </button>
-          </div>
-
-          <!-- CROP TAB -->
-          <div class="tab-content hidden" id="tab-crop">
-            <div class="crop-toggle-row">
-              <span class="field-label">Enable crop</span>
-              <label class="toggle">
-                <input type="checkbox" id="cropToggle" />
-                <span class="toggle-track"><span class="toggle-thumb"></span></span>
-              </label>
-            </div>
-            <div class="crop-controls" id="cropControls">
-              <div class="field-label mb-8">Aspect ratio</div>
-              <div class="aspect-grid">
-                <button class="aspect-btn active" data-ratio="free">Free</button>
-                <button class="aspect-btn" data-ratio="16:9">16:9</button>
-                <button class="aspect-btn" data-ratio="1:1">1:1</button>
-                <button class="aspect-btn" data-ratio="9:16">9:16</button>
-                <button class="aspect-btn" data-ratio="4:3">4:3</button>
-                <button class="aspect-btn" data-ratio="3:4">3:4</button>
-              </div>
-              <div class="crop-values">
-                <div class="field-row">
-                  <div class="field">
-                    <label class="field-label">X</label>
-                    <input type="number" class="time-input" id="cropX" value="0" min="0" />
-                  </div>
-                  <div class="field">
-                    <label class="field-label">Y</label>
-                    <input type="number" class="time-input" id="cropY" value="0" min="0" />
-                  </div>
-                </div>
-                <div class="field-row">
-                  <div class="field">
-                    <label class="field-label">Width</label>
-                    <input type="number" class="time-input" id="cropW" value="0" min="1" />
-                  </div>
-                  <div class="field">
-                    <label class="field-label">Height</label>
-                    <input type="number" class="time-input" id="cropH" value="0" min="1" />
-                  </div>
-                </div>
-              </div>
-              <button class="btn btn-secondary btn-full" id="resetCropBtn">Reset crop</button>
-            </div>
-          </div>
-
-          <!-- EXPORT TAB -->
-          <div class="tab-content hidden" id="tab-export">
-            <div class="field">
-              <label class="field-label">Output filename</label>
-              <div class="filename-input-wrap">
-                <input type="text" class="time-input filename-input" id="filenameInput" value="clipforge-export" />
-                <span class="filename-ext">.mp4</span>
-              </div>
-            </div>
-            <div class="field">
-              <label class="field-label">Quality preset</label>
-              <div class="quality-grid">
-                <button class="quality-btn" data-quality="low">
-                  <span class="quality-label">Low</span>
-                  <span class="quality-desc">Fast · Small file</span>
-                </button>
-                <button class="quality-btn active" data-quality="medium">
-                  <span class="quality-label">Medium</span>
-                  <span class="quality-desc">Balanced</span>
-                </button>
-                <button class="quality-btn" data-quality="high">
-                  <span class="quality-label">High</span>
-                  <span class="quality-desc">Best quality</span>
-                </button>
-              </div>
-            </div>
-            <div class="export-summary">
-              <div class="summary-row"><span>Trim</span><span id="summaryTrim">Full video</span></div>
-              <div class="summary-row"><span>Crop</span><span id="summaryCrop">None</span></div>
-              <div class="summary-row"><span>Est. time</span><span id="summaryTime">—</span></div>
-            </div>
-            <button class="btn btn-primary btn-full btn-export" id="exportBtn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-              </svg>
-              Export Video
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- EXPORT PROGRESS -->
-      <div class="glass-panel export-panel hidden" id="exportPanel">
-        <div class="panel-header">
-          <span class="panel-title">Exporting…</span>
-          <span class="export-pct" id="exportPct">0%</span>
-        </div>
-        <div class="progress-bar-wrap">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="export-log" id="exportLog"></div>
-      </div>
-
     </section>
   </main>
 
@@ -451,18 +235,6 @@
     </div>
   </section>
 
-  <!-- FFMPEG LOADING OVERLAY -->
-  <div class="ffmpeg-overlay hidden" id="ffmpegOverlay">
-    <div class="ffmpeg-card">
-      <div class="ffmpeg-spinner"></div>
-      <div class="ffmpeg-title">Loading ClipForge Engine</div>
-      <div class="ffmpeg-sub" id="ffmpegStatus">Initializing ffmpeg.wasm…</div>
-      <div class="ffmpeg-progress-wrap">
-        <div class="ffmpeg-progress" id="ffmpegProgress"></div>
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
@@ -471,19 +243,66 @@
         <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
       </div>
       <div class="footer-links">
-        <a href="index.html">Editor</a>
-        <a href="pages/terms.html">Terms</a>
-        <a href="pages/privacy.html">Privacy</a>
-        <a href="pages/sitemap.html">Sitemap</a>
+        <a href="/">Editor</a>
+        <a href="/terms">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/sitemap">Sitemap</a>
       </div>
       <p class="footer-copy">ClipForge © 2026 — All video processing is done locally in your browser.</p>
     </div>
   </footer>
 
-  <!-- SW must register first so COOP/COEP headers are active before ffmpeg loads -->
-  <script src="js/sw-register.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Tiny helper: decorative waveform + handing the chosen file off to /editor.
+       No ffmpeg, no service worker here — this page stays ad-friendly. -->
+  <script src="js/handoff.js"></script>
+  <script>
+    // Decorative waveform bars
+    (function buildWaveform() {
+      const bars = document.getElementById('waveformBars');
+      if (!bars) return;
+      for (let i = 0; i < 60; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'waveform-bar';
+        bar.style.setProperty('--dur', (0.8 + Math.random() * 0.8) + 's');
+        bar.style.setProperty('--delay', (Math.random() * -1.5) + 's');
+        bar.style.minHeight = (20 + Math.random() * 80) + '%';
+        bar.style.transformOrigin = 'bottom center';
+        bars.appendChild(bar);
+      }
+    })();
 
+    // Mobile nav
+    document.getElementById('mobileToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu')?.classList.toggle('open');
+    });
+
+    // Upload zone → stash file → redirect to /editor
+    const uploadZone  = document.getElementById('uploadZone');
+    const fileInput   = document.getElementById('fileInput');
+    const statusEl    = document.getElementById('handoffStatus');
+
+    async function goToEditorWithFile(file) {
+      if (!file || !file.type.startsWith('video/')) return;
+      statusEl.textContent = 'Opening editor…';
+      try {
+        await cfStashFile(file);
+      } catch (e) {
+        console.warn('[ClipForge] handoff failed, editor will ask you to choose the file again', e);
+      }
+      window.location.href = '/editor';
+    }
+
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('drag-over');
+      const file = e.dataTransfer?.files?.[0];
+      goToEditorWithFile(file);
+    });
+    uploadZone.addEventListener('click', e => { if (!e.target.closest('.upload-btn')) fileInput.click(); });
+    fileInput.addEventListener('change', () => goToEditorWithFile(fileInput.files[0]));
+  </script>
 
 </body>
 </html>
