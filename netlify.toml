@@ -1,0 +1,28 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/editor"
+  to = "/"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/pages/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/pages/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap"
+  to = "/pages/sitemap.html"
+  status = 200

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sitemap — ClipForge</title>
+  <meta name="description" content="ClipForge sitemap. Browse all pages of the ClipForge browser-based video editor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Editor</a>
+        <a href="terms.html" class="nav-link">Terms</a>
+        <a href="privacy.html" class="nav-link">Privacy</a>
+        <a href="sitemap.html" class="nav-link active">Sitemap</a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile-menu" id="mobileMenu">
+      <a href="../index.html" class="nav-link">Editor</a>
+      <a href="terms.html" class="nav-link">Terms</a>
+      <a href="privacy.html" class="nav-link">Privacy</a>
+      <a href="sitemap.html" class="nav-link active">Sitemap</a>
+    </div>
+  </nav>
+
+  <main class="static-page">
+    <div class="static-hero">
+      <div class="static-badge">Navigation</div>
+      <h1 class="static-title">Sitemap</h1>
+      <p class="static-meta">All pages of ClipForge — browser-based video editing with no uploads required.</p>
+    </div>
+
+    <div class="static-body">
+
+      <div class="static-section">
+        <h2>Application</h2>
+        <div class="sitemap-grid">
+          <a href="../index.html" class="sitemap-item">
+            <span class="sitemap-path">/</span>
+            <span class="sitemap-desc">Home &amp; Video Editor — Upload your video, trim start/end points, apply crop with aspect ratio presets, and export to MP4.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="static-section">
+        <h2>Legal</h2>
+        <div class="sitemap-grid">
+          <a href="terms.html" class="sitemap-item">
+            <span class="sitemap-path">/terms</span>
+            <span class="sitemap-desc">Terms &amp; Conditions — Usage policy, "as is" disclaimer, liability limits, and user responsibilities.</span>
+          </a>
+          <a href="privacy.html" class="sitemap-item">
+            <span class="sitemap-path">/privacy</span>
+            <span class="sitemap-desc">Privacy Policy — Data collection practices (none), how ffmpeg.wasm processing works locally, and cookie usage.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="static-section">
+        <h2>Navigation</h2>
+        <div class="sitemap-grid">
+          <a href="sitemap.html" class="sitemap-item">
+            <span class="sitemap-path">/sitemap</span>
+            <span class="sitemap-desc">Sitemap — This page. A structured overview of all ClipForge pages and their purpose.</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="static-section">
+        <h2>About ClipForge</h2>
+        <p>ClipForge is a free, open, browser-based video editor. It requires no account, no installation, and transmits no data to any server. All video processing is powered by ffmpeg.wasm running entirely inside your browser.</p>
+        <ul>
+          <li>Trim videos to precise start and end points.</li>
+          <li>Crop with interactive overlay and aspect ratio presets (16:9, 1:1, 9:16).</li>
+          <li>Export to H.264 MP4 with low, medium, or high quality presets.</li>
+          <li>Works with MP4, MOV, and WEBM input formats.</li>
+          <li>Fully responsive — works on desktop and mobile browsers.</li>
+          <li>Deployable on Netlify, Vercel, Cloudflare Pages, or any static host.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⬡</span>
+        <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Editor</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+      <p class="footer-copy">ClipForge © 2026 — All video processing is done locally in your browser.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileToggle')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
