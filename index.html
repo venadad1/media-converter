@@ -44,12 +44,6 @@
   }
   </script>
 
-  <!-- ═══════════════════════════════════════════════
-       AD SCRIPTS GO HERE — no COEP/COOP on this page
-       Example: Adsterra, Google AdSense, etc.
-       ═══════════════════════════════════════════════ -->
-  <!-- <script async src="//your-ad-network.com/tag.js"></script> -->
-
   <style>
     /* Landing-page specific layout */
     .editor-cta-wrap {
@@ -115,73 +109,85 @@
     @media (max-width: 640px) {
       .editor-cta-box { padding: 40px 24px; }
     }
-   .ad-slot {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 16px 24px;
-  display: flex;
-  justify-content: center;
-}
 
-/* Prilagođeni kontejner za oglas */
-.ad-slot-inner {
-  background: var(--glass);
-  border: 1px dashed var(--glass-border);
-  border-radius: var(--radius);
-  width: 100%;
-  max-width: 728px; /* Podrazumevana širina za desktop baner */
-  overflow: hidden;
-  display: block;   /* Menjamo flex u block da se elementi ne bi gurali u isti red */
-  text-align: center;
-  height: auto;       
-  padding: 12px 0;    
-}
+    /* Fixed Banner Right Styling */
+    .fixed-banner-right {
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+    }
+    @media (max-width: 1200px) {
+      .fixed-banner-right { display: none; } /* Sakriva se na manjim ekranima da ne preklapa sadržaj */
+    }
 
-/* PODRAZUMEVANO (Desktop): Prikaži desktop, sakrij mobilni */
-.desktop-banner, .desktop-banner * {
-  display: block !important;
-}
-.mobile-banner, .mobile-banner * { 
-  display: none !important; 
-}
+    /* Ad Slots */
+    .ad-slot {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: center;
+    }
 
-/* MOBILNI REŽIM: Kada je ekran manji od 768px */
-@media (max-width: 768px) {
-  .desktop-banner, .desktop-banner * { 
-    display: none !important; 
-  }
-  .mobile-banner, .mobile-banner * { 
-    display: block !important; 
-    margin: 0 auto; 
-  }
-  .ad-slot-inner {
-    max-width: 320px; /* Skupljamo okvir na širinu mobilnog banera */
-    padding: 5px 0;
-  }
-}
+    .ad-slot-inner {
+      background: var(--glass);
+      border: 1px dashed var(--glass-border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 728px;
+      overflow: hidden;
+      display: block;
+      text-align: center;
+      height: auto;        
+      padding: 12px 0;    
+    }
 
-@media (max-width: 768px) {
-  .editor-frame { height: 100svh; border-radius: 0; border-left: none; border-right: none; }
-  .editor-frame-wrap { padding: 8px 0 0; }
-}
+    /* PODRAZUMEVANO (Desktop): Prikaži desktop, sakrij mobilni */
+    .desktop-banner {
+      display: block !important;
+    }
+    .mobile-banner { 
+      display: none !important; 
+    }
+
+    /* MOBILNI REŽIM: Kada je ekran manji od 768px */
+    @media (max-width: 768px) {
+      .desktop-banner { 
+        display: none !important; 
+      }
+      .mobile-banner { 
+        display: block !important; 
+        margin: 0 auto; 
+      }
+      .ad-slot-inner {
+        max-width: 320px;
+        padding: 5px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .editor-frame { height: 100svh; border-radius: 0; border-left: none; border-right: none; }
+      .editor-frame-wrap { padding: 8px 0 0; }
+    }
   </style>
 </head>
 <body>
-<div class="fixed-banner-right">
-    <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) -->
-	<script>
-  atOptions = {
-    'key' : 'f83edbdafdfc06a09e4073273fb32715',
-    'format' : 'iframe',
-    'height' : 300,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-<script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
 
-    <div id="adsterra-banner"></div>
-</div>
+  <!-- DESKTOP SKYSCRAPER BANNER (RIGHT SIDEBAR) -->
+  <div class="fixed-banner-right">
+    <script>
+      atOptions = {
+        'key' : 'f83edbdafdfc06a09e4073273fb32715',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
+  </div>
 
   <!-- NAV -->
   <nav class="navbar" id="navbar">
@@ -233,42 +239,40 @@
     </div>
   </div>
 
-  <!-- AD SLOT — TOP BANNER (above editor CTA) -->
+  <!-- AD SLOT — TOP BANNER -->
   <div class="ad-slot">
-  <div class="ad-slot-inner">
-    
-    <div class="ad-desktop">
-    </div>
-<!-- Paste your top banner ad code here -->
- <script>
-  atOptions = {
-    'key' : '773ca98be2ca0cd828754195841d3174',
-    'format' : 'iframe',
-    'height' : 90,
-    'width' : 728,
-    'params' : {}
-  };
-</script>
-<script src="https://crypotential.com/773ca98be2ca0cd828754195841d3174/invoke.js"></script>
+    <div class="ad-slot-inner">
+      <!-- Desktop Banner (728x90) -->
+      <div class="desktop-banner">
+        <script>
+          atOptions = {
+            'key' : '773ca98be2ca0cd828754195841d3174',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script src="https://crypotential.com/773ca98be2ca0cd828754195841d3174/invoke.js"></script>
+      </div>
 
-    <div class="ad-mobile">
+      <!-- Mobile Banner (320x50) -->
+      <div class="mobile-banner">
+        <script>
+          atOptions = {
+            'key' : '246ccf710fdcaeef59d42f4e745320ee',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script src="https://crypotential.com/246ccf710fdcaeef59d42f4e745320ee/invoke.js"></script>
+      </div>
     </div>
-<!-- Paste your top banner ad code here -->
- <script>
-  atOptions = {
-    'key' : '246ccf710fdcaeef59d42f4e745320ee',
-    'format' : 'iframe',
-    'height' : 50,
-    'width' : 320,
-    'params' : {}
-  };
-</script>
-<script src="https://crypotential.com/246ccf710fdcaeef59d42f4e745320ee/invoke.js"></script>
-
   </div>
-</div>
 
-  <!-- EDITOR CTA — opens editor.html as a full page (required for COEP/COOP isolation) -->
+  <!-- EDITOR CTA -->
   <div class="editor-cta-wrap">
     <div class="editor-cta-box">
       <div class="editor-cta-icon">
@@ -291,11 +295,8 @@
   <!-- AD SLOT — BELOW EDITOR -->
   <div class="ad-slot">
     <div class="ad-slot-inner">
-      <!-- Paste your mid-page ad code here -->
-       <script async="async" data-cfasync="false" src="https://crypotential.com/5bf19cb81ab3e74fe86565494c591846/invoke.js"></script>
-<div id="container-5bf19cb81ab3e74fe86565494c591846"></div>
-
-      Advertisement
+      <script async="async" data-cfasync="false" src="https://crypotential.com/5bf19cb81ab3e74fe86565494c591846/invoke.js"></script>
+      <div id="container-5bf19cb81ab3e74fe86565494c591846"></div>
     </div>
   </div>
 
@@ -352,10 +353,7 @@
   <!-- AD SLOT — BOTTOM -->
   <div class="ad-slot">
     <div class="ad-slot-inner">
-      <!-- Paste your bottom ad code here -->
-       <script src="https://crypotential.com/7c/b0/af/7cb0afa542bb99a87f1fa5b72c97f37d.js"></script>
-
-      Advertisement
+      <script src="https://crypotential.com/7c/b0/af/7cb0afa542bb99a87f1fa5b72c97f37d.js"></script>
     </div>
   </div>
 
