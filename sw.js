@@ -1,45 +1,36 @@
-// ============================================================
 // ClipForge Service Worker
-// Injects Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy
-// headers on every response so SharedArrayBuffer is available
-// for ffmpeg.wasm — works on ANY static host, no server config needed.
-// ============================================================
+// Registered ONLY from editor.html — never touches index.html or ad resources.
+// Provides COOP/COEP headers as a fallback when server-side headers aren't set
+// (e.g. incognito on first visit before SW activates, or misconfigured host).
 
-const SW_VERSION = 'clipforge-v2';
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
-});
+self.addEventListener('fetch', e => {
+  const url = new URL(e.request.url);
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
+  // Only intercept same-origin requests — never touch cross-origin ad resources
+  if (url.origin !== self.location.origin) return;
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // Opaque / opaqueredirect responses (cross-origin requests made
-        // without CORS, e.g. plain <script src> to a third-party domain,
-        // ad network scripts, Google Fonts) cannot be re-wrapped: their
-        // status is forced to 0 and body is hidden. Constructing a new
-        // Response with status 0 throws, so just pass these through as-is.
-        if (response.type === 'opaque' || response.type === 'opaqueredirect' || response.status === 0) {
-          return response;
-        }
+  // Only intercept editor.html and local assets (js/, css/, fonts loaded by editor)
+  // Skip index.html entirely — it must NOT get COEP or ads break
+  const path = url.pathname;
+  const isEditorPage  = path === '/editor.html' || path === '/editor';
+  const isLocalAsset  = path.startsWith('/js/') || path.startsWith('/css/');
 
-        // Clone and rewrite headers on real (same-origin or CORS) responses
-        const newHeaders = new Headers(response.headers);
-        newHeaders.set('Cross-Origin-Opener-Policy', 'same-origin');
-        newHeaders.set('Cross-Origin-Embedder-Policy', 'require-corp');
-        newHeaders.set('Cross-Origin-Resource-Policy', 'cross-origin');
+  if (!isEditorPage && !isLocalAsset) return;
 
-        return new Response(response.body, {
-          status: response.status,
-          statusText: response.statusText,
-          headers: newHeaders,
-        });
-      })
-      .catch(() => fetch(event.request))
+  e.respondWith(
+    fetch(e.request).then(response => {
+      const headers = new Headers(response.headers);
+      headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+      headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+      headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers,
+      });
+    }).catch(() => fetch(e.request))
   );
 });

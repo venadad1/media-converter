@@ -4,30 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ClipForge — Free Online Video Editor | Trim & Crop Video, No Watermark, No Limits</title>
-  <meta name="description" content="ClipForge is a 100% free online video editor with no usage limits, no file size limits, and no watermark. Trim, cut, and crop MP4, MOV & WEBM videos instantly in your browser — no sign up, no upload to any server, no software install. The fastest free video trimmer and video cropper online." />
+  <meta name="description" content="ClipForge is a 100% free online video editor with no usage limits, no file size limits, and no watermark. Trim, cut, and crop MP4, MOV & WEBM videos instantly in your browser — no sign up, no upload to any server, no software install." />
   <meta name="keywords" content="free online video editor, video trimmer online, video cropper online, cut video online free, crop video online, trim video no watermark, browser video editor, no download video editor, free video editor no limits, no file size limit video editor, mp4 trimmer online, vertical video cropper, 9:16 video crop" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://videocroptool.com/" />
+  <link rel="canonical" href="https://clipforge.app/" />
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://videocroptool.com/" />
+  <meta property="og:url" content="https://clipforge.app/" />
   <meta property="og:title" content="ClipForge — Free Online Video Editor (No Watermark, No Limits)" />
   <meta property="og:description" content="Trim and crop videos online for free, with zero usage limits and no watermark. 100% browser-based — your files never leave your device." />
-  <meta property="og:image" content="https://videocroptool.com/og-image.png" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="ClipForge — Free Online Video Editor (No Watermark, No Limits)" />
-  <meta name="twitter:description" content="Trim and crop videos online for free, with zero usage limits and no watermark. 100% browser-based — your files never leave your device." />
-  <meta name="twitter:image" content="https://videocroptool.com/og-image.png" />
+  <meta name="twitter:description" content="Trim and crop videos online for free, with zero usage limits and no watermark. 100% browser-based." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,84 +30,186 @@
     "name": "ClipForge",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Any (runs in web browser)",
-    "url": "https://videocroptool.com/",
-    "description": "ClipForge is a 100% free, browser-based video editor with no usage limits and no watermark. Trim and crop MP4, MOV, and WEBM videos directly in your browser with no uploads to any server.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
+    "url": "https://clipforge.app/",
+    "description": "100% free browser-based video editor. Trim and crop MP4, MOV, WEBM with no watermark, no limits, no uploads.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "featureList": [
       "Free video trimming with no usage limits",
       "No file size limits on uploads or exports",
       "Interactive video cropping with 16:9, 1:1, 9:16 aspect ratio presets",
       "No watermark on exported videos",
-      "100% browser-based processing — no uploads to a server",
-      "MP4, MOV, and WEBM support",
+      "100% browser-based — no server uploads",
       "No account or sign-up required"
     ]
   }
   </script>
-  <!-- OVDE UBACUJEŠ CSS KOD ZA DESNI BANER -->
+
+  <!-- ═══════════════════════════════════════════════
+       AD SCRIPTS GO HERE — no COEP/COOP on this page
+       Example: Adsterra, Google AdSense, etc.
+       ═══════════════════════════════════════════════ -->
+  <!-- <script async src="//your-ad-network.com/tag.js"></script> -->
+
   <style>
-    .fixed-banner-right {
-      position: fixed; /* Ovo ga lepi za ekran, ne za stranicu */
-      top: 100px;      /* Odmak od vrha ekrana */
-      right: 20px;     /* Odmak od desne ivice */
-      z-index: 9999;   /* Da uvek bude iznad sadržaja */
+    /* Landing-page specific layout */
+    .editor-cta-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
     }
-    /* OVO JE KLJUČNO: Sakrij baner na mobilnom da ne smeta */
-    @media only screen and (max-width: 1024px) {
-      .fixed-banner-right {
-        display: none;
-      }
+    .editor-cta-box {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
     }
+    .editor-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 200px;
+      background: radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .editor-cta-icon {
+      width: 72px; height: 72px;
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.3);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-light);
+    }
+    .editor-cta-title {
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .editor-cta-sub {
+      font-size: 15px;
+      color: var(--text2);
+      max-width: 520px;
+      line-height: 1.65;
+    }
+    .editor-cta-btn {
+      font-size: 16px;
+      padding: 14px 32px;
+      margin-top: 4px;
+    }
+    .editor-cta-note {
+      font-size: 12px;
+      color: var(--text3);
+      margin-top: -4px;
+    }
+    @media (max-width: 640px) {
+      .editor-cta-box { padding: 40px 24px; }
+    }
+   .ad-slot {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Prilagođeni kontejner za oglas */
+.ad-slot-inner {
+  background: var(--glass);
+  border: 1px dashed var(--glass-border);
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 728px; /* Podrazumevana širina za desktop baner */
+  overflow: hidden;
+  display: block;   /* Menjamo flex u block da se elementi ne bi gurali u isti red */
+  text-align: center;
+  height: auto;       
+  padding: 12px 0;    
+}
+
+/* PODRAZUMEVANO (Desktop): Prikaži desktop, sakrij mobilni */
+.desktop-banner, .desktop-banner * {
+  display: block !important;
+}
+.mobile-banner, .mobile-banner * { 
+  display: none !important; 
+}
+
+/* MOBILNI REŽIM: Kada je ekran manji od 768px */
+@media (max-width: 768px) {
+  .desktop-banner, .desktop-banner * { 
+    display: none !important; 
+  }
+  .mobile-banner, .mobile-banner * { 
+    display: block !important; 
+    margin: 0 auto; 
+  }
+  .ad-slot-inner {
+    max-width: 320px; /* Skupljamo okvir na širinu mobilnog banera */
+    padding: 5px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .editor-frame { height: 100svh; border-radius: 0; border-left: none; border-right: none; }
+  .editor-frame-wrap { padding: 8px 0 0; }
+}
   </style>
 </head>
 <body>
-
 <div class="fixed-banner-right">
     <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) -->
-    <script>
-      atOptions = {
-        'key' : 'f83edbdafdfc06a09e4073273fb32715',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
+	<script>
+  atOptions = {
+    'key' : 'f83edbdafdfc06a09e4073273fb32715',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
+
     <div id="adsterra-banner"></div>
 </div>
 
   <!-- NAV -->
   <nav class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <span class="logo-icon">⬡</span>
         <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
       </a>
       <div class="nav-links">
-        <a href="/" class="nav-link active">Editor</a>
-        <a href="/terms" class="nav-link">Terms</a>
-        <a href="/privacy" class="nav-link">Privacy</a>
-        <a href="/sitemap" class="nav-link">Sitemap</a>
+        <a href="index.html" class="nav-link active">Editor</a>
+        <a href="pages/terms.html" class="nav-link">Terms</a>
+        <a href="pages/privacy.html" class="nav-link">Privacy</a>
+        <a href="pages/sitemap.html" class="nav-link">Sitemap</a>
       </div>
       <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu">
-      <a href="/" class="nav-link active">Editor</a>
-      <a href="/terms" class="nav-link">Terms</a>
-      <a href="/privacy" class="nav-link">Privacy</a>
-      <a href="/sitemap" class="nav-link">Sitemap</a>
+      <a href="index.html" class="nav-link active">Editor</a>
+      <a href="pages/terms.html" class="nav-link">Terms</a>
+      <a href="pages/privacy.html" class="nav-link">Privacy</a>
+      <a href="pages/sitemap.html" class="nav-link">Sitemap</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <div class="hero-wrap" id="heroBadge">
+  <div class="hero-wrap">
     <div class="hero-content">
       <div class="hero-badge">
         <span class="badge-dot"></span>
@@ -124,7 +221,6 @@
       <p class="hero-sub">
         ClipForge is a 100% free browser video editor with <strong>zero usage limits</strong>, <strong>no file size limits</strong>, and <strong>no watermark</strong>.
         Cut, trim, and crop MP4, MOV, and WEBM videos instantly — no software install, no account, and no upload to any server.
-        Everything runs locally in your browser, powered by ffmpeg.wasm.
       </p>
       <div class="hero-pills">
         <span class="hero-pill">✓ 100% Free</span>
@@ -137,51 +233,71 @@
     </div>
   </div>
 
-  <!-- MAIN APP -->
-  <main class="app-main" id="appMain">
-  <div style="text-align: center; margin: 15px auto 25px auto; min-height: 90px;">
-        <script>
-          atOptions = {
-            'key' : 'd38658bff53a8ad3d32902758ea33ce3',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-          };
-        </script>
-        <script src="https://globalimmaturelunatic.com/d38658bff53a8ad3d32902758ea33ce3/invoke.js"></script>
+  <!-- AD SLOT — TOP BANNER (above editor CTA) -->
+  <div class="ad-slot">
+  <div class="ad-slot-inner">
+    
+    <div class="ad-desktop">
     </div>
+<!-- Paste your top banner ad code here -->
+ <script>
+  atOptions = {
+    'key' : '773ca98be2ca0cd828754195841d3174',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://crypotential.com/773ca98be2ca0cd828754195841d3174/invoke.js"></script>
 
-    <!-- CTA — opens the editor as its own page -->
-    <section class="upload-section" id="uploadSection">
-      <a href="/editor" class="upload-zone" id="uploadZone" style="cursor:pointer; text-decoration:none;">
-        <div class="upload-waveform" aria-hidden="true">
-          <div class="waveform-bars" id="waveformBars"></div>
-        </div>
-        <div class="upload-content">
-          <div class="upload-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
-            </svg>
-          </div>
-          <h2 class="upload-title">Ready to Trim &amp; Crop Your Video?</h2>
-          <p class="upload-sub">MP4, MOV, WEBM — no file size limits, no watermark, no time limit</p>
-          <span class="btn btn-primary upload-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-              <path d="M5 12h14M13 6l6 6-6 6"/>
-            </svg>
-            Open Editor
-          </span>
-        </div>
+    <div class="ad-mobile">
+    </div>
+<!-- Paste your top banner ad code here -->
+ <script>
+  atOptions = {
+    'key' : '246ccf710fdcaeef59d42f4e745320ee',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://crypotential.com/246ccf710fdcaeef59d42f4e745320ee/invoke.js"></script>
+
+  </div>
+</div>
+
+  <!-- EDITOR CTA — opens editor.html as a full page (required for COEP/COOP isolation) -->
+  <div class="editor-cta-wrap">
+    <div class="editor-cta-box">
+      <div class="editor-cta-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40" height="40">
+          <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+        </svg>
+      </div>
+      <h2 class="editor-cta-title">Ready to Edit Your Video?</h2>
+      <p class="editor-cta-sub">Click below to open the ClipForge editor — trim, crop, and export your video for free with no watermark and no limits.</p>
+      <a href="/editor.html" class="btn btn-primary editor-cta-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>
+        </svg>
+        Open Free Video Editor
       </a>
-    </section>
-  </main>
-
-  <div style="width: 100%; max-width: 1200px; margin: 40px auto; padding: 0 20px; box-sizing: border-box;">
-      <script async="async" data-cfasync="false" src="https://globalimmaturelunatic.com/c6cf113dc10e872a614ab991e14e6c80/invoke.js"></script>
-      <div id="container-c6cf113dc10e872a614ab991e14e6c80"></div>
+      <p class="editor-cta-note">Opens in this tab — no download, no install, no sign-up</p>
+    </div>
   </div>
 
+  <!-- AD SLOT — BELOW EDITOR -->
+  <div class="ad-slot">
+    <div class="ad-slot-inner">
+      <!-- Paste your mid-page ad code here -->
+       <script async="async" data-cfasync="false" src="https://crypotential.com/5bf19cb81ab3e74fe86565494c591846/invoke.js"></script>
+<div id="container-5bf19cb81ab3e74fe86565494c591846"></div>
+
+      Advertisement
+    </div>
+  </div>
 
   <!-- HOW IT WORKS / SEO CONTENT -->
   <section class="info-section">
@@ -193,7 +309,7 @@
           <div class="step-card">
             <span class="step-num">1</span>
             <h3 class="step-title">Upload Your Video</h3>
-            <p class="step-desc">Drag and drop or choose a file. ClipForge supports MP4, MOV, and WEBM — with no upload size limit, because your video never actually leaves your device.</p>
+            <p class="step-desc">Drag and drop or choose a file inside the editor above. ClipForge supports MP4, MOV, and WEBM — with no upload size limit, because your video never leaves your device.</p>
           </div>
           <div class="step-card">
             <span class="step-num">2</span>
@@ -203,7 +319,7 @@
           <div class="step-card">
             <span class="step-num">3</span>
             <h3 class="step-title">Export — Free, No Watermark</h3>
-            <p class="step-desc">Click Export and your trimmed, cropped MP4 downloads straight to your device in seconds. No watermark, no account, no usage limit — ever.</p>
+            <p class="step-desc">Click Export and your trimmed, cropped MP4 downloads straight to your device. No watermark, no account, no usage limit — ever.</p>
           </div>
         </div>
       </div>
@@ -217,7 +333,7 @@
           </div>
           <div class="why-card">
             <h3 class="why-title">No Upload, No Server, 100% Private</h3>
-            <p class="why-desc">Unlike most video trimmer and video cropper tools online, ClipForge never uploads your file to a server. All processing happens locally in your browser, so your content stays private.</p>
+            <p class="why-desc">Unlike most video trimmer and video cropper tools online, ClipForge never uploads your file to a server. All processing happens locally in your browser using ffmpeg.wasm, so your content stays private.</p>
           </div>
           <div class="why-card">
             <h3 class="why-title">No Install, No Sign-Up</h3>
@@ -233,6 +349,16 @@
     </div>
   </section>
 
+  <!-- AD SLOT — BOTTOM -->
+  <div class="ad-slot">
+    <div class="ad-slot-inner">
+      <!-- Paste your bottom ad code here -->
+       <script src="https://crypotential.com/7c/b0/af/7cb0afa542bb99a87f1fa5b72c97f37d.js"></script>
+
+      Advertisement
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
@@ -241,36 +367,20 @@
         <span class="logo-text">Clip<span class="logo-accent">Forge</span></span>
       </div>
       <div class="footer-links">
-        <a href="/">Editor</a>
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/sitemap">Sitemap</a>
+        <a href="index.html">Editor</a>
+        <a href="pages/terms.html">Terms</a>
+        <a href="pages/privacy.html">Privacy</a>
+        <a href="pages/sitemap.html">Sitemap</a>
+		<a href="mailto:admin@videocroptool.com?subject=Inquiry%20via%20ClipForge">Contact</a>
       </div>
       <p class="footer-copy">ClipForge © 2026 — All video processing is done locally in your browser.</p>
     </div>
   </footer>
 
-  <!-- Decorative waveform + mobile nav. No ffmpeg, no file handling here —
-       this page stays simple and ad-friendly; the editor lives on its own page. -->
   <script>
-    (function buildWaveform() {
-      const bars = document.getElementById('waveformBars');
-      if (!bars) return;
-      for (let i = 0; i < 60; i++) {
-        const bar = document.createElement('div');
-        bar.className = 'waveform-bar';
-        bar.style.setProperty('--dur', (0.8 + Math.random() * 0.8) + 's');
-        bar.style.setProperty('--delay', (Math.random() * -1.5) + 's');
-        bar.style.minHeight = (20 + Math.random() * 80) + '%';
-        bar.style.transformOrigin = 'bottom center';
-        bars.appendChild(bar);
-      }
-    })();
-
     document.getElementById('mobileToggle')?.addEventListener('click', () => {
-      document.getElementById('mobileMenu')?.classList.toggle('open');
+      document.getElementById('mobileMenu').classList.toggle('open');
     });
   </script>
-
 </body>
 </html>
