@@ -45,6 +45,7 @@
   </script>
 
   <style>
+  
     /* Landing-page specific layout */
     .editor-cta-wrap {
       max-width: 1280px;
@@ -110,17 +111,40 @@
       .editor-cta-box { padding: 40px 24px; }
     }
 
-    /* Fixed Banner Right Styling */
     .fixed-banner-right {
-      position: fixed;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100;
+      position: fixed; /* Ovo ga lepi za ekran, ne za stranicu */
+      top: 100px;      /* Odmak od vrha ekrana */
+      right: 20px;     /* Odmak od desne ivice */
+      z-index: 9999;   /* Da uvek bude iznad sadržaja */
     }
-    @media (max-width: 1200px) {
-      .fixed-banner-right { display: none; } /* Sakriva se na manjim ekranima da ne preklapa sadržaj */
+    /* OVO JE KLJUČNO: Sakrij baner na mobilnom da ne smeta */
+    @media only screen and (max-width: 1024px) {
+      .fixed-banner-right {
+        display: none;
+      }
     }
+	.fixed-banner-left {
+    position: fixed; /* Го лепи за екран */
+    top: 100px;      /* Ист одмак од врвот */
+    left: 20px;      /* Одмак од ЛЕВАТА ивица */
+    z-index: 9999;   /* Да биде над содржината */
+}
+
+/* Го криеме и левиот на мобилен */
+@media only screen and (max-width: 1024px) {
+    .fixed-banner-left {
+        display: none;
+    }
+}
+.fixed-banner-bottom {
+    position: fixed;
+    bottom: 10px;        /* 10 пиксели оддалеченост од самото дно на екранот */
+    left: 50%;           /* Го носи почетокот на банерот точно на средина */
+    transform: translateX(-50%); /* Го влече назад за половина од неговата должина за да биде совршено центриран */
+    z-index: 9999;       /* Да се гледа секогаш најгоре над содржината */
+    display: flex;
+    justify-content: center;
+}
 
     /* Ad Slots */
     .ad-slot {
@@ -177,17 +201,36 @@
 
   <!-- DESKTOP SKYSCRAPER BANNER (RIGHT SIDEBAR) -->
   <div class="fixed-banner-right">
-    <script>
-      atOptions = {
-        'key' : 'f83edbdafdfc06a09e4073273fb32715',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
-    </script>
-    <script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
-  </div>
+    <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) -->
+	<script>
+  atOptions = {
+    'key' : 'f83edbdafdfc06a09e4073273fb32715',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
+
+    <div id="adsterra-banner"> </div>
+</div>
+
+<div class="fixed-banner-left">
+    <!-- Ovde ubaci Adsterra baner kod (npr. 300x250) --> 
+	<script>
+  atOptions = {
+    'key' : 'd4d12f340b17d700e2cd54e6b10710d8',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://globalimmaturelunatic.com/d4d12f340b17d700e2cd54e6b10710d8/invoke.js"></script>
+
+    <div id="adsterra-banner"> </div>
+</div>
 
   <!-- NAV -->
   <nav class="navbar" id="navbar">
@@ -246,28 +289,28 @@
       <div class="desktop-banner">
         <script>
           atOptions = {
-            'key' : '773ca98be2ca0cd828754195841d3174',
+            'key' : 'd38658bff53a8ad3d32902758ea33ce3',
             'format' : 'iframe',
             'height' : 90,
             'width' : 728,
             'params' : {}
           };
         </script>
-        <script src="https://crypotential.com/773ca98be2ca0cd828754195841d3174/invoke.js"></script>
-      </div>
+        <script src="https://globalimmaturelunatic.com/d38658bff53a8ad3d32902758ea33ce3/invoke.js"></script>
+    </div>
 
       <!-- Mobile Banner (320x50) -->
       <div class="mobile-banner">
         <script>
           atOptions = {
-            'key' : '246ccf710fdcaeef59d42f4e745320ee',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
-        </script>
-        <script src="https://crypotential.com/246ccf710fdcaeef59d42f4e745320ee/invoke.js"></script>
+    'key' : '99c23fe066427c5756852d7d30bcb75f',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://globalimmaturelunatic.com/99c23fe066427c5756852d7d30bcb75f/invoke.js"></script>
       </div>
     </div>
   </div>
@@ -293,11 +336,9 @@
   </div>
 
   <!-- AD SLOT — BELOW EDITOR -->
-  <div class="ad-slot">
-    <div class="ad-slot-inner">
-      <script async="async" data-cfasync="false" src="https://crypotential.com/5bf19cb81ab3e74fe86565494c591846/invoke.js"></script>
-      <div id="container-5bf19cb81ab3e74fe86565494c591846"></div>
-    </div>
+  <div style="width: 100%; max-width: 1200px; margin: 40px auto; padding: 0 20px; box-sizing: border-box;">
+      <script async="async" data-cfasync="false" src="https://globalimmaturelunatic.com/c6cf113dc10e872a614ab991e14e6c80/invoke.js"></script>
+      <div id="container-c6cf113dc10e872a614ab991e14e6c80"></div>
   </div>
 
   <!-- HOW IT WORKS / SEO CONTENT -->
@@ -346,14 +387,35 @@
           </div>
         </div>
       </div>
-
+<!-- ФИКСЕН БАНЕР НА СРЕДИНА НА ЕКРАНОТ (ДОЛУ) -->
+<div class="fixed-banner-bottom">
+    <script>
+    atOptions = {
+        'key' : '99c23fe066427c5756852d7d30bcb75f',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+    };
+    </script>
+    <script src="https://globalimmaturelunatic.com/99c23fe066427c5756852d7d30bcb75f/invoke.js"></script>
+</div>
     </div>
   </section>
 
   <!-- AD SLOT — BOTTOM -->
   <div class="ad-slot">
     <div class="ad-slot-inner">
-      <script src="https://crypotential.com/7c/b0/af/7cb0afa542bb99a87f1fa5b72c97f37d.js"></script>
+      <script>
+  atOptions = {
+    'key' : 'f83edbdafdfc06a09e4073273fb32715',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://globalimmaturelunatic.com/f83edbdafdfc06a09e4073273fb32715/invoke.js"></script>
     </div>
   </div>
 
