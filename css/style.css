@@ -327,7 +327,7 @@ body::after {
 /* ========================
    UPLOAD ZONE
    ======================== */
-.upload-section { padding: 16px 0 40px; }
+.upload-section { padding: 8px 0 24px; }
 
 .upload-zone {
   border: 2px dashed var(--glass-border);
